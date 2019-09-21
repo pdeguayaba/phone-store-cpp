@@ -1,13 +1,22 @@
-#include <iostream>
-#include <array>
-#include <iterator>
-#include <fstream>
-#include <algorithm>
-
+//*****************************************************************************
+//
+//   Programadores : ESTRELLA AYALA, EDWIN J.
+//                   GIRAUD BETANCOURT, STEPHANIE
+//                   PEREZ SANABRIA, JOSE A.
+//                   VALLE RODRIGUEZ, ERICK J.
+//   Curso         : COMP3800 (78112) - Programming Languages
+//   Proyecto      : Trabajo de Investigación C++
+//   Profesor      : Jose Navarro Figueroa
+//   Fecha         : 22 de septiembre de 2019
+//*****************************************************************************
 /*
  * Incluir el archivo header: telefonomovil.h que contiene la clase.
  */
 #include "telefonomovil.h"
+#include <array>
+#include <iterator>
+#include <fstream>
+#include <algorithm>
 
 /*
  * Prototipos
@@ -48,6 +57,7 @@ void venderMovil(TelefonoMovil arr[], string marca, string modelo, int vender, i
  * Prototipo de la opcion 8.
  */
 void printOrdenAlfabetico(TelefonoMovil arr[], int objsEnArr);
+
 /*
  * Funcion Main del programa.
  */
@@ -95,18 +105,28 @@ int main() {
              */
         case 1:
             /*
-             * objsEnArr va a guardar la cantidad de objetos que leyo del archivo .txt
+             * Lo primero que hace este caso es que le pide al usuario el archivo .txt
              */
             cout << "Entre el nombre del archivo que desea leer (Ejemplo: misTelefonos.txt): ";
             cin >> fileName;
             objsEnArr = cargaDatos(arr, fileName);
             break;
+            /*
+             * Caso 2, esta opcion va a almacenar todos los datos en el archivo que el usuario está modificando.
+             */
         case 2:
             opcion2(arr, fileName, objsEnArr);
             break;
+            /*
+             * Caso 3, esta opcion va a desplegar el valor total del inventario que se tiene.
+             */
         case 3:
             cout << "Inventario total: $" << valorDeInventario(arr, objsEnArr) << endl;
             break;
+            /*
+             * Caso 4, esta opcion va a pedirle al usuario que introduzca una marca y un modelo
+             * particular y va a desplegar el valor de inventario que tiene para ese telefono.
+             */
         case 4:
             {
                 string marca;
@@ -119,6 +139,10 @@ int main() {
                 cout << "Valor de Inventario para " << marca << " " << modelo << ": $" << invMM << endl;
             }
             break;
+            /*
+             * Caso 5, esta opcion va a pedirle al usuario que introduzca una marca y un modelo
+             * particular y va a desplegar la cantidad que se tiene de ese telefono.
+             */
         case 5:
             {
                 string marca;
@@ -131,6 +155,11 @@ int main() {
                 cout << "Cantidad disponible de " << marca << " " << modelo << ": " << cantidadMM << endl;
             }
             break;
+            /*
+             * Caso 6, esta opcion va a pedirle al usuario que introduzca una marca y un modelo
+             * particular, luego cuando llama la funcion, la misma va a pedirle que introduzca
+             * el precio y la cantidad que desea anadir al inventario.
+             */
         case 6:
             {
                 string marca;
@@ -143,6 +172,10 @@ int main() {
                 anadirInventario(arr, marca, modelo, anadir, objsEnArr);
             }
             break;
+            /*
+             * Caso 7, esta opcion va a pedirle al usuario que introduzca una marca y un modelo
+             * particular, luego va a pedirle la cantidad que vendio de ese telefono.
+             */
         case 7:
             {
                 string marca;
@@ -157,19 +190,32 @@ int main() {
                 venderMovil(arr, marca, modelo, vender, objsEnArr);
             }
             break;
+            /*
+             * Caso 8, esta opcion va a desplegar todos los telefonos en orden alfabetico.
+             * Ademas muestra la cantidad que hay de los mismos y su precio.
+             */
         case 8:
             printOrdenAlfabetico(arr, objsEnArr);
             break;
+            /*
+             * Si el usuario introduce una opcion invalida, el programa le da un mensaje
+             * al usuario de que la opcion que introdujo es una invalida.
+             */
         default:
             cout << "Opcion Invalida" << endl;
             break;
         }
     }
+    /*
+     * Hasta que el usuario no introduzca la opcion 0, el programa sigue corriendo.
+     */
     while (temp != 0);
     return 0;
 }
 /*
- * Funcion para desplegar el menu y hacer que el usuario.
+ * Funcion para desplegar el menu con las opciones.
+ * Autor: ESTRELLA AYALA, EDWIN J.
+ * Fecha: 4 de septiembre de 2019
  */
 void menu() {
     cout << "\nMenu\n";
@@ -187,6 +233,8 @@ void menu() {
 }
 /*
  * Opcion 1:
+ * Autor: ESTRELLA AYALA, EDWIN J.
+ * Fecha: 17 de septiembre de 2019
  */
 int cargaDatos(TelefonoMovil arr[], string fileName) {
     int objsEnArr = 0;
@@ -220,7 +268,9 @@ int cargaDatos(TelefonoMovil arr[], string fileName) {
     return objsEnArr;
 }
 /*
- * Opcion 2: .
+ * Opcion 2:
+ * Autor: ESTRELLA AYALA, EDWIN J.
+ * Fecha: 19 de septiembre de 2019
  */
 void opcion2(TelefonoMovil arr[], string fileName, int objsEnArr) {
     ofstream outputFile;
@@ -234,7 +284,9 @@ void opcion2(TelefonoMovil arr[], string fileName, int objsEnArr) {
     outputFile.close();
 }
 /*
- * Opcion 3: .
+ * Opcion 3:
+ * Autor: ESTRELLA AYALA, EDWIN J.
+ * Fecha: 11 de septiembre de 2019
  */
 double valorDeInventario(TelefonoMovil arr[], int objsEnArr) {
     double total = 0;
@@ -245,6 +297,8 @@ double valorDeInventario(TelefonoMovil arr[], int objsEnArr) {
 }
 /*
  * Opcion 4:
+ * Autor: ESTRELLA AYALA, EDWIN J.
+ * Fecha: 11 de septiembre de 2019
  */
 double valorDeInventarioPorMarcaModelo(TelefonoMovil arr[], string marca, string modelo, int objsEnArr) {
     double total = 0;
@@ -255,6 +309,8 @@ double valorDeInventarioPorMarcaModelo(TelefonoMovil arr[], string marca, string
 }
 /*
  * Opcion 5:
+ * Autor: ESTRELLA AYALA, EDWIN J.
+ * Fecha: 11 de septiembre de 2019
  */
 int cantidadDisponible(TelefonoMovil arr[], string marca, string modelo, int objsEnArr) {
     int total = 0;
@@ -265,6 +321,8 @@ int cantidadDisponible(TelefonoMovil arr[], string marca, string modelo, int obj
 }
 /*
  * Opcion 6:
+ * Autor: ESTRELLA AYALA, EDWIN J.
+ * Fecha: 11 de septiembre de 2019 (Revisado y Editado: 18 de septiembre de 2019)
  */
 void anadirInventario(TelefonoMovil arr[], string marca, string modelo, int anadir, int& objsEnArr) {
     int cantidadPasada = 0;
@@ -294,6 +352,8 @@ void anadirInventario(TelefonoMovil arr[], string marca, string modelo, int anad
 }
 /*
  * Opcion 7:
+ * Autor: ESTRELLA AYALA, EDWIN J.
+ * Fecha: 11 de septiembre de 2019
  */
 void venderMovil(TelefonoMovil arr[], string marca, string modelo, int vender, int objsEnArr) {
     int cantidadPasada = 0;
@@ -311,6 +371,8 @@ void venderMovil(TelefonoMovil arr[], string marca, string modelo, int vender, i
 }
 /*
  * Opcion 8:
+ * Autor: ESTRELLA AYALA, EDWIN J.
+ * Fecha: 20 de septiembre de 2019 (Revisado y Editado: 21 de septiembre de 2019)
  */
 void printOrdenAlfabetico(TelefonoMovil arr[], int objsEnArr) {
     TelefonoMovil temp;
@@ -319,7 +381,7 @@ void printOrdenAlfabetico(TelefonoMovil arr[], int objsEnArr) {
     string modeloFirst;
     string modeloNext;
     for (int i = 0; i < objsEnArr; i++) {
-        for (int j = 0; j < objsEnArr - 1 - i; j++) {
+        for (int j = 0; j < objsEnArr - i - 1; j++) {
             marcaFirst = arr[j].getMarca();
             for_each(marcaFirst.begin(), marcaFirst.end(), [](char& c) {
                 c = ::tolower(c);
