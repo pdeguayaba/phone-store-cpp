@@ -384,19 +384,19 @@ void printOrdenAlfabetico(TelefonoMovil arr[], int objsEnArr) {
         for (int j = 0; j < objsEnArr - i - 1; j++) {
             marcaFirst = arr[j].getMarca();
             for_each(marcaFirst.begin(), marcaFirst.end(), [](char& c) {
-                c = ::tolower(c);
+                c = ::toupper(c);
             });
             marcaNext = arr[j + 1].getMarca();
             for_each(marcaNext.begin(), marcaNext.end(), [](char& c) {
-                c = ::tolower(c);
+                c = ::toupper(c);
             });
             modeloFirst = arr[j].getModelo();
             for_each(modeloFirst.begin(), modeloFirst.end(), [](char& c) {
-                c = ::tolower(c);
+                c = ::toupper(c);
             });
             modeloNext = arr[j + 1].getModelo();
             for_each(modeloNext.begin(), modeloNext.end(), [](char& c) {
-                c = ::tolower(c);
+                c = ::toupper(c);
             });
             if (marcaFirst.compare(marcaNext) > 0) {
                 temp = arr[j];
