@@ -164,7 +164,7 @@ int main() {
             {
                 string marca;
                 string modelo;
-                int anadir;
+                int anadir=0;
                 cout << "Marca: ";
                 cin >> marca;
                 cout << "Modelo: ";
