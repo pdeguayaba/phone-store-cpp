@@ -17,6 +17,7 @@
 #include <iterator>
 #include <fstream>
 #include <algorithm>
+#include <iomanip>
 
 /*
  * Prototipos
@@ -120,7 +121,7 @@ int main() {
              * Caso 3, esta opcion va a desplegar el valor total del inventario que se tiene.
              */
         case 3:
-            cout << "Inventario total: $" << valorDeInventario(arr, objsEnArr) << endl;
+            cout << "Inventario total: $" << fixed << setprecision(2) << valorDeInventario(arr, objsEnArr) << endl;
             break;
             /*
              * Caso 4, esta opcion va a pedirle al usuario que introduzca una marca y un modelo
@@ -135,7 +136,7 @@ int main() {
                 cout << "Modelo: ";
                 cin >> modelo;
                 double invMM = valorDeInventarioPorMarcaModelo(arr, marca, modelo, objsEnArr);
-                cout << "Valor de Inventario para " << marca << " " << modelo << ": $" << invMM << endl;
+                cout << "Valor de Inventario para " << marca << " " << modelo << ": $" << fixed << setprecision(2) << invMM << endl;
             }
             break;
             /*
@@ -412,6 +413,6 @@ void printOrdenAlfabetico(TelefonoMovil arr[], int objsEnArr) {
         }
     }
     for (int i = 0; i < objsEnArr; i++) {
-        cout << arr[i].getMarca() << " " << arr[i].getModelo() << ": " << arr[i].getInventario() << " \t|\t Precio: $" << arr[i].getPrecio() << endl;
+        cout << arr[i].getMarca() << " " << arr[i].getModelo() << ": " << arr[i].getInventario() << " \t|\t Precio: $" << fixed << setprecision(2) << arr[i].getPrecio() << endl;
     }
 }
