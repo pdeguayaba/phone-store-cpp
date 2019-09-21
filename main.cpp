@@ -164,7 +164,7 @@ int main() {
             {
                 string marca;
                 string modelo;
-                int anadir=0;
+                int anadir;
                 cout << "Marca: ";
                 cin >> marca;
                 cout << "Modelo: ";
@@ -213,13 +213,12 @@ int main() {
     return 0;
 }
 /*
- * Funcion para desplegar el menu con las opciones.
- * Autor: ESTRELLA AYALA, EDWIN J.
- * Fecha: 4 de septiembre de 2019
+ * Menu:        Funcion para desplegarle al usuario el menu con las opciones para escoger.
+ * Autor:       ESTRELLA AYALA, EDWIN J.
+ * Fecha:       4 de septiembre de 2019
  */
 void menu() {
     cout << "\nMenu\n";
-    cout << "------------------------------------------------------------------\n";
     cout << "1) Cargar datos de archivo.\n";
     cout << "2) Almacenar datos en archivo.\n";
     cout << "3) Valor de inventario.\n";
@@ -232,7 +231,8 @@ void menu() {
     cout << "\nSeleccione una opcion: ";
 }
 /*
- * Opcion 1:   Esta funcion va a cargar los datos del archivo .txt a un arreglo de objetos.
+ * Opcion 1:   Esta funcion va a cargar los datos del archivo .txt a un arreglo de objetos y devuelve
+ *             un valor entero (objsEnArr) para saber la cantidad de telefonos que cargo al arreglo.
  * Argumentos: Arreglo de objetos (arr[]) para guardar los datos y el nombre del archivo (fileName) .txt
  * Autor:      ESTRELLA AYALA, EDWIN J.
  * Fecha:      17 de septiembre de 2019
@@ -269,9 +269,12 @@ int cargaDatos(TelefonoMovil arr[], string fileName) {
     return objsEnArr;
 }
 /*
- * Opcion 2:
- * Autor: ESTRELLA AYALA, EDWIN J.
- * Fecha: 19 de septiembre de 2019
+ * Opcion 2:   Esta funcion va a guardar la informacion recopilada en el archivo .txt
+ * Argumentos: Arreglo de objetos (arr[]) que contiene la info a guardarse en el archivo .txt
+ *             el nombre del archivo (fileName) .txt en donde se va a guardar la info
+ *             y por ultimo el total de telefonos (objsEnArr) que tiene el arreglo.
+ * Autor:      ESTRELLA AYALA, EDWIN J.
+ * Fecha:      19 de septiembre de 2019
  */
 void opcion2(TelefonoMovil arr[], string fileName, int objsEnArr) {
     ofstream outputFile;
@@ -285,9 +288,11 @@ void opcion2(TelefonoMovil arr[], string fileName, int objsEnArr) {
     outputFile.close();
 }
 /*
- * Opcion 3:
- * Autor: ESTRELLA AYALA, EDWIN J.
- * Fecha: 11 de septiembre de 2019
+ * Opcion 3:   Esta funcion devuelve el valor total ($) del inventario que se tiene.
+ * Argumentos: Arreglo de objetos (arr[]) con la informacion de los telefonos
+ *             y el numero de telefonos (objsEnArr) en el arreglo.
+ * Autor:      ESTRELLA AYALA, EDWIN J.
+ * Fecha:      11 de septiembre de 2019
  */
 double valorDeInventario(TelefonoMovil arr[], int objsEnArr) {
     double total = 0;
@@ -297,9 +302,11 @@ double valorDeInventario(TelefonoMovil arr[], int objsEnArr) {
     return total;
 }
 /*
- * Opcion 4:
- * Autor: ESTRELLA AYALA, EDWIN J.
- * Fecha: 11 de septiembre de 2019
+ * Opcion 4:   Esta funcion devuelve el valor total ($) de un telefono en particular (marca-modelo).
+ * Argumentos: Arreglo de objetos (arr[]) con la informacion de los telefonos, la marca del telefono (marca),
+ *             el modelo del telefono (modelo) y el numero de telefonos (objsEnArr) en el arreglo.
+ * Autor:      ESTRELLA AYALA, EDWIN J.
+ * Fecha:      11 de septiembre de 2019
  */
 double valorDeInventarioPorMarcaModelo(TelefonoMovil arr[], string marca, string modelo, int objsEnArr) {
     double total = 0;
@@ -309,9 +316,11 @@ double valorDeInventarioPorMarcaModelo(TelefonoMovil arr[], string marca, string
     return total;
 }
 /*
- * Opcion 5:
- * Autor: ESTRELLA AYALA, EDWIN J.
- * Fecha: 11 de septiembre de 2019
+ * Opcion 5:   Esta funcion devuelve la cantidad total que se tiene de un telefono en particular (marca-modelo).
+ * Argumentos: Arreglo de objetos (arr[]) con la informacion de los telefonos, la marca del telefono (marca),
+ *             el modelo del telefono (modelo) y el numero de telefonos (objsEnArr) en el arreglo.
+ * Autor:      ESTRELLA AYALA, EDWIN J.
+ * Fecha:      11 de septiembre de 2019
  */
 int cantidadDisponible(TelefonoMovil arr[], string marca, string modelo, int objsEnArr) {
     int total = 0;
@@ -321,9 +330,14 @@ int cantidadDisponible(TelefonoMovil arr[], string marca, string modelo, int obj
     return total;
 }
 /*
- * Opcion 6:
- * Autor: ESTRELLA AYALA, EDWIN J.
- * Fecha: 11 de septiembre de 2019 (Revisado y Editado: 18 de septiembre de 2019)
+ * Opcion 6:   Esta funcion anade un telefono (marca-modelo) en el arreglo, toma en consideracion si ya ese telefono
+ *             esta en el arreglo, de estarlo simplemente le suma el valor al inventario, de no estar, le pide al
+ *             usuario que anada la marca, el modelo, el precio y la cantidad de telefono que desea anadir.
+ * Argumentos: Arreglo de objetos (arr[]) con la informacion de los telefonos, la marca del telefono (marca),
+ *             el modelo del telefono (modelo), cantidad que desea anadir (anadir) y el numero de
+ *             telefonos (objsEnArr) en el arreglo.
+ * Autor:      ESTRELLA AYALA, EDWIN J.
+ * Fecha:      11 de septiembre de 2019 (Revisado y Editado: 18 de septiembre de 2019)
  */
 void anadirInventario(TelefonoMovil arr[], string marca, string modelo, int anadir, int& objsEnArr) {
     int cantidadPasada = 0;
@@ -352,9 +366,16 @@ void anadirInventario(TelefonoMovil arr[], string marca, string modelo, int anad
     }
 }
 /*
- * Opcion 7:
- * Autor: ESTRELLA AYALA, EDWIN J.
- * Fecha: 11 de septiembre de 2019
+ * Opcion 7:   Esta funcion toma en consideracion un telefono en particular (marca-modelo), y le va a
+ *             restar la cantidad que se vendio de ese telefono al inventario del mismo. Si la cantidad
+ *             del inventario del telefono (marca-modelo) particular es de 0, se le notifica al usuario
+ *             que "No hay unidades disponibles." Y, si la venta es mayor que el inventario, se le
+ *             notifica al usuario y se le deja saber cuantas unidades quedan disponibles.
+ * Argumentos: Arreglo de objetos (arr[]) con la informacion de los telefonos, la marca del telefono (marca),
+ *             el modelo del telefono (modelo), cantidad a vender (vender), y la cantidad de telefonos (objsEnArr)
+ *             en el arreglo.
+ * Autor:      ESTRELLA AYALA, EDWIN J.
+ * Fecha:      11 de septiembre de 2019
  */
 void venderMovil(TelefonoMovil arr[], string marca, string modelo, int vender, int objsEnArr) {
     int cantidadPasada = 0;
@@ -371,48 +392,64 @@ void venderMovil(TelefonoMovil arr[], string marca, string modelo, int vender, i
     }
 }
 /*
- * Opcion 8:
+ * Opcion 8:   Esta funcion imprime la informacion (de los telefonos que se tienen en el arreglo) en orden
+ *             alfabetico. (Marca | Modelo | Precio | Inventario)
+ * Argumentos: Arreglo de objetos (arr[]) con la informacion de los telefonos y el numero de telefonos en
+ *             en arreglo (objsEnArr).
  * Autor: ESTRELLA AYALA, EDWIN J.
  * Fecha: 20 de septiembre de 2019 (Revisado y Editado: 21 de septiembre de 2019)
  */
-void printOrdenAlfabetico(TelefonoMovil arr[], int objsEnArr) {
-    TelefonoMovil temp;
-    string marcaFirst;
-    string marcaNext;
-    string modeloFirst;
-    string modeloNext;
-    for (int i = 0; i < objsEnArr; i++) {
-        for (int j = 0; j < objsEnArr - i - 1; j++) {
-            marcaFirst = arr[j].getMarca();
-            for_each(marcaFirst.begin(), marcaFirst.end(), [](char& c) {
-                c = ::toupper(c);
-            });
-            marcaNext = arr[j + 1].getMarca();
-            for_each(marcaNext.begin(), marcaNext.end(), [](char& c) {
-                c = ::toupper(c);
-            });
-            modeloFirst = arr[j].getModelo();
-            for_each(modeloFirst.begin(), modeloFirst.end(), [](char& c) {
-                c = ::toupper(c);
-            });
-            modeloNext = arr[j + 1].getModelo();
-            for_each(modeloNext.begin(), modeloNext.end(), [](char& c) {
-                c = ::toupper(c);
-            });
-            if (marcaFirst.compare(marcaNext) > 0) {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            } else if (marcaFirst.compare(marcaNext) == 0) {
-                if (modeloFirst.compare(modeloNext) > 0) {
-                    temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-            }
-        }
-    }
-    for (int i = 0; i < objsEnArr; i++) {
-        cout << arr[i].getMarca() << " " << arr[i].getModelo() << ": " << arr[i].getInventario() << " \t|\t Precio: $" << fixed << setprecision(2) << arr[i].getPrecio() << endl;
-    }
-}
+ void printOrdenAlfabetico(TelefonoMovil arr[], int objsEnArr) {
+     /*
+      * Variables para controlar el output.
+      */
+     const int name_width = 20 ;
+     const int num_flds = 4 ;
+     const string sep = " |" ;
+     const int total_width = name_width*4 + sep.size() * num_flds ;
+     const string line = sep + string(total_width - 1, '-' ) + '|' ;
+
+     TelefonoMovil temp;
+     string marcaFirst;
+     string marcaNext;
+     string modeloFirst;
+     string modeloNext;
+     for (int i = 0; i < objsEnArr; i++) {
+         for (int j = 0; j < objsEnArr - i - 1; j++) {
+             marcaFirst = arr[j].getMarca();
+             for_each(marcaFirst.begin(), marcaFirst.end(), [](char& c) {
+                 c = ::toupper(c);
+             });
+             marcaNext = arr[j + 1].getMarca();
+             for_each(marcaNext.begin(), marcaNext.end(), [](char& c) {
+                 c = ::toupper(c);
+             });
+             modeloFirst = arr[j].getModelo();
+             for_each(modeloFirst.begin(), modeloFirst.end(), [](char& c) {
+                 c = ::toupper(c);
+             });
+             modeloNext = arr[j + 1].getModelo();
+             for_each(modeloNext.begin(), modeloNext.end(), [](char& c) {
+                 c = ::toupper(c);
+             });
+             if (marcaFirst.compare(marcaNext) > 0) {
+                 temp = arr[j];
+                 arr[j] = arr[j + 1];
+                 arr[j + 1] = temp;
+             } else if (marcaFirst.compare(marcaNext) == 0) {
+                 if (modeloFirst.compare(modeloNext) > 0) {
+                     temp = arr[j];
+                     arr[j] = arr[j + 1];
+                     arr[j + 1] = temp;
+                 }
+             }
+         }
+     }
+     cout << line << '\n' << sep << setw(name_width) << "Marca" << sep << setw(name_width) << "Modelo" << sep
+          << setw(name_width) << "Precio" << sep << setw(name_width) << "Inventario" << sep << '\n' << line << '\n' ;
+     for (int i = 0; i < objsEnArr; i++) {
+         cout << sep << setw(name_width) << arr[i].getMarca() << sep << setw(name_width) << arr[i].getModelo() << sep
+              << setw(name_width) << fixed << setprecision(2) << arr[i].getPrecio() << sep << setw(name_width) << arr[i].getInventario() << sep << '\n';
+     }
+     cout << line << '\n' ;
+ }
