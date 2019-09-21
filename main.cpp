@@ -5,7 +5,7 @@
 //                   PEREZ SANABRIA, JOSE A.
 //                   VALLE RODRIGUEZ, ERICK J.
 //   Curso         : COMP3800 (78112) - Programming Languages
-//   Proyecto      : Trabajo de Investigación C++
+//   Proyecto      : Trabajo de Investigacion C++
 //   Profesor      : Jose Navarro Figueroa
 //   Fecha         : 22 de septiembre de 2019
 //*****************************************************************************
@@ -20,9 +20,8 @@
 
 /*
  * Prototipos
- */
-/*
- * Prototipo de Funcion menu() para desplegar las opciones al usuario.
+ *
+ * Prototipo de Funcion menu().
  */
 void menu();
 /*
@@ -63,7 +62,7 @@ void printOrdenAlfabetico(TelefonoMovil arr[], int objsEnArr);
  */
 int main() {
     /*
-     * Variable temporal para la opcion del usuario
+     * Variable temporal para la seleccion de opcion del usuario.
      */
     int temp;
     /*
@@ -232,9 +231,10 @@ void menu() {
     cout << "\nSeleccione una opcion: ";
 }
 /*
- * Opcion 1:
- * Autor: ESTRELLA AYALA, EDWIN J.
- * Fecha: 17 de septiembre de 2019
+ * Opcion 1:   Esta funcion va a cargar los datos del archivo .txt a un arreglo de objetos.
+ * Argumentos: Arreglo de objetos (arr[]) para guardar los datos y el nombre del archivo (fileName) .txt
+ * Autor:      ESTRELLA AYALA, EDWIN J.
+ * Fecha:      17 de septiembre de 2019
  */
 int cargaDatos(TelefonoMovil arr[], string fileName) {
     int objsEnArr = 0;

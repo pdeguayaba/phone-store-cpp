@@ -5,7 +5,7 @@
 //                   PEREZ SANABRIA, JOSE A.
 //                   VALLE RODRIGUEZ, ERICK J.
 //   Curso         : COMP3800 (78112) - Programming Languages
-//   Proyecto      : Trabajo de Investigación C++
+//   Proyecto      : Trabajo de Investigacion C++
 //   Profesor      : Jose Navarro Figueroa
 //   Fecha         : 22 de septiembre de 2019
 //
@@ -35,7 +35,7 @@ class TelefonoMovil {
         int inventario;
     public:
         /*
-         * Constructor VacC-o
+         * Constructor Vacio
          */
         TelefonoMovil(): marca("Generica"), modelo("Basico"), precio(50.00),
         inventario(0) {}
@@ -55,8 +55,7 @@ class TelefonoMovil {
         ~TelefonoMovil() {}
         /*
          * Setters / Modifiers / Mutators / Transformers
-         */
-        /*
+         *
          * Se le asigna el valor a la marca.
          */
         void setMarca(string ma) {
@@ -82,8 +81,7 @@ class TelefonoMovil {
         }
         /*
          * Getters / Observers
-         */
-        /*
+         *
          * Devuelve el valor de la marca.
          */
         string getMarca() const {
