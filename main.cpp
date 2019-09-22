@@ -297,7 +297,9 @@ void opcion2(TelefonoMovil arr[], string fileName, int objsEnArr) {
 double valorDeInventario(TelefonoMovil arr[], int objsEnArr) {
     double total = 0;
     for (int i = 0; i < objsEnArr; i++) {
-        if (arr[i].getMarca() != "Generica" && arr[i].getModelo() != "Basico" && arr[i].getPrecio() != 50 && arr[i].getInventario() != 0) total += ((double) arr[i].getInventario()) * arr[i].getPrecio();
+        if (arr[i].getMarca() != "Generica" && arr[i].getModelo() != "Basico" && arr[i].getPrecio() != 50 && arr[i].getInventario() != 0) {
+            total += ((double) arr[i].getInventario()) * arr[i].getPrecio();
+        }
     }
     return total;
 }
@@ -311,7 +313,8 @@ double valorDeInventario(TelefonoMovil arr[], int objsEnArr) {
 double valorDeInventarioPorMarcaModelo(TelefonoMovil arr[], string marca, string modelo, int objsEnArr) {
     double total = 0;
     for (int i = 0; i < objsEnArr; i++) {
-        if (!(marca.compare(arr[i].getMarca())) && !(modelo.compare(arr[i].getModelo()))) total += (double) arr[i].getInventario() * arr[i].getPrecio();
+        if (!(marca.compare(arr[i].getMarca())) && !(modelo.compare(arr[i].getModelo()))) {
+            total += (double) arr[i].getInventario() * arr[i].getPrecio();
     }
     return total;
 }
@@ -325,7 +328,9 @@ double valorDeInventarioPorMarcaModelo(TelefonoMovil arr[], string marca, string
 int cantidadDisponible(TelefonoMovil arr[], string marca, string modelo, int objsEnArr) {
     int total = 0;
     for (int i = 0; i < objsEnArr; i++) {
-        if (!(marca.compare(arr[i].getMarca())) && !(modelo.compare(arr[i].getModelo()))) total += arr[i].getInventario();
+        if (!(marca.compare(arr[i].getMarca())) && !(modelo.compare(arr[i].getModelo()))) {
+            total += arr[i].getInventario();
+        }
     }
     return total;
 }
@@ -381,12 +386,18 @@ void venderMovil(TelefonoMovil arr[], string marca, string modelo, int vender, i
     int cantidadPasada = 0;
     for (int i = 0; i < objsEnArr; i++) {
         if (!(marca.compare(arr[i].getMarca())) && !(modelo.compare(arr[i].getModelo()))) {
-            if (arr[i].getInventario() == 0) cout << "No hay unidades disponibles.\n";
-            else if (arr[i].getInventario() < vender) cout << "Solo hay " << arr[i].getInventario() << " unidades disponibles.\n";
+            if (arr[i].getInventario() == 0) {
+                cout << "No hay unidades disponibles.\n";
+            }
+            else if (arr[i].getInventario() < vender) {
+                cout << "Solo hay " << arr[i].getInventario() << " unidades disponibles.\n";
+            }
             else {
                 cantidadPasada = arr[i].getInventario();
                 arr[i].setInventario(cantidadPasada - vender);
-                if (arr[i].getInventario() < 0) arr[i].setInventario(0);
+                if (arr[i].getInventario() < 0) {
+                    arr[i].setInventario(0);
+                }
             }
         }
     }
@@ -401,19 +412,28 @@ void venderMovil(TelefonoMovil arr[], string marca, string modelo, int vender, i
  */
  void printOrdenAlfabetico(TelefonoMovil arr[], int objsEnArr) {
      /*
-      * Variables para controlar el output.
+      * Variables para controlar el output y darle el fomato deseado.
       */
      const int name_width = 20 ;
      const int num_flds = 4 ;
      const string sep = " |" ;
      const int total_width = name_width*4 + sep.size() * num_flds ;
      const string line = sep + string(total_width - 1, '-' ) + '|' ;
-
+     /*
+      * Variables para manejar el sorteo.
+      */
      TelefonoMovil temp;
      string marcaFirst;
      string marcaNext;
      string modeloFirst;
      string modeloNext;
+     /*
+      * Algoritmo para ordenar alfabeticamente el areglo de telefonos (arr[]) y poder
+      * imprimir el mismo. Se usa el for_each() junto con el toupper para asegurarnos
+      * tomar todo el string y convertirlo en mayusculas. Esto garantiza que no hayan
+      * errores por el archivo .txt tener una combinacion de letras mayusculas y
+      * minusculas.
+      */
      for (int i = 0; i < objsEnArr; i++) {
          for (int j = 0; j < objsEnArr - i - 1; j++) {
              marcaFirst = arr[j].getMarca();
@@ -445,8 +465,14 @@ void venderMovil(TelefonoMovil arr[], string marca, string modelo, int vender, i
              }
          }
      }
+     /*
+      * Output para el "header" de la tabla.
+      */
      cout << line << '\n' << sep << setw(name_width) << "Marca" << sep << setw(name_width) << "Modelo" << sep
           << setw(name_width) << "Precio" << sep << setw(name_width) << "Inventario" << sep << '\n' << line << '\n' ;
+     /*
+      * For loop para recorrer el arreglo de telefonos y poder desplegar la informacion al usuario.
+      */
      for (int i = 0; i < objsEnArr; i++) {
          cout << sep << setw(name_width) << arr[i].getMarca() << sep << setw(name_width) << arr[i].getModelo() << sep
               << setw(name_width) << fixed << setprecision(2) << arr[i].getPrecio() << sep << setw(name_width) << arr[i].getInventario() << sep << '\n';
