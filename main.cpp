@@ -315,6 +315,7 @@ double valorDeInventarioPorMarcaModelo(TelefonoMovil arr[], string marca, string
     for (int i = 0; i < objsEnArr; i++) {
         if (!(marca.compare(arr[i].getMarca())) && !(modelo.compare(arr[i].getModelo()))) {
             total += (double) arr[i].getInventario() * arr[i].getPrecio();
+        }
     }
     return total;
 }
