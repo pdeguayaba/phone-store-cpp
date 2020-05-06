@@ -1,9 +1,6 @@
 //*****************************************************************************
 //
-//   Programadores : ESTRELLA AYALA, EDWIN J.
-//                   GIRAUD BETANCOURT, STEPHANIE
-//                   PEREZ SANABRIA, JOSE A.
-//                   VALLE RODRIGUEZ, ERICK J.
+//   Programador   : ESTRELLA AYALA, EDWIN J.
 //   Curso         : COMP3800 (78112) - Programming Languages
 //   Proyecto      : Trabajo de Investigacion C++
 //   Profesor      : Jose Navarro Figueroa
